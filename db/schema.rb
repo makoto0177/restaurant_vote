@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_043841) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_045955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,9 +44,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043841) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  create_table "vote_restaurants", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "vote_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_vote_restaurants_on_restaurant_id"
+    t.index ["vote_id"], name: "index_vote_restaurants_on_vote_id"
+  end
+
   create_table "votes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "vote_restaurants", "restaurants"
+  add_foreign_key "vote_restaurants", "votes"
 end
