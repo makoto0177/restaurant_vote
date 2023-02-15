@@ -10,20 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_023641) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_045955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "url"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_restaurants_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +52,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_023641) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  create_table "vote_restaurants", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "vote_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_vote_restaurants_on_restaurant_id"
+    t.index ["vote_id"], name: "index_vote_restaurants_on_vote_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_votes_on_restaurant_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "posts", "users"
+  add_foreign_key "restaurants", "posts"
+  add_foreign_key "vote_restaurants", "restaurants"
+  add_foreign_key "vote_restaurants", "votes"
+  add_foreign_key "votes", "restaurants"
+  add_foreign_key "votes", "users"
 end
