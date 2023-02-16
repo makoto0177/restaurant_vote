@@ -1,6 +1,6 @@
 <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
-    <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">新規登録</h1>
+    <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Signup</h1>
     <%= form_with model: @user, local: true do |f| %>
       <div class="form-control mb-10">
         <%= f.label :name, class: 'label' %>
@@ -18,7 +18,7 @@
           <%= f.label :password_confirmation, class: 'label' %>
           <%= f.password_field :password_confirmation, class: 'input input-primary' %>
       </div>
-      <%= f.submit '登録する', class: 'btn btn-primary' %>
+      <%= f.submit 'signup', class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
