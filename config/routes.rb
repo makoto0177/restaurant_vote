@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
   resources :users, only: %i[new create]
-  resources :posts, only: %i[index]
+  resources :posts, only: %i[index new create]
   resources :restaurants, only: %i[index] do
     collection do
       get 'search'
