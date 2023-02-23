@@ -17,6 +17,11 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user)
   end
 
+  def vote
+    @post = Post.find(params[:id])
+    @restaurants = Restaurant.where(post_id: @post.id)
+  end
+
   private
 
   def post_params

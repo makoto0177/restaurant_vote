@@ -1,0 +1,11 @@
+<div class="w-full max-w-md space-y-8">
+  <h1>Restaurants#vote（投票ページ）</h1>
+  <p><%= @post.title %></p>
+  <%= form_with do |f| %>
+  <% @restaurants.each do |restaurant| %>
+    <%= f.label restaurant.name %>
+    <%= f.check_box :restaurant_id, {}, restaurant.id, nil %>
+  <% end %>
+    <%= f.submit 'voting', class: 'btn btn-primary' %>
+  <% end %>
+</div>
