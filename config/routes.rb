@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :votes, only: %i[create] 
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
