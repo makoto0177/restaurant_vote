@@ -17,6 +17,11 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @restaurants = Restaurant.where(post_id: @post.id)
+  end  
+
   def vote
     @post = Post.find(params[:id])
     @restaurants = Restaurant.where(post_id: @post.id)
@@ -27,5 +32,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title)
   end
-
 end

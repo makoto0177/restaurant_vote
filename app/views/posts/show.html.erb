@@ -1,0 +1,6 @@
+<div class="w-full max-w-md space-y-8">
+  <%= @post.title %>
+  <% @restaurants.each do |restaurant| %>
+      <p><%= restaurant.name %>投票数<%= restaurant.votes.count %><p>
+  <% end %>
+</div>
