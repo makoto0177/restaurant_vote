@@ -3,4 +3,5 @@
   <% @restaurants.each do |restaurant| %>
       <p><%= restaurant.name %>投票数<%= restaurant.votes.count %><p>
   <% end %>
+    <%= pie_chart @chart %>
 </div>

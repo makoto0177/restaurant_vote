@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @restaurants = Restaurant.where(post_id: @post.id)
+    @chart = {'飲食店aaa'=>2, '飲食店bbb'=>1}
   end  
 
   def vote
