@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
     api_key = ENV['HOTPEPPER_API_KEY']
     url = uri << "?key=" << api_key << "&large_area=Z011" << "&format=json" 
    
-    if @search = params[:address]
+    if @search = params[:search]
       url = url << "&keyword=" 
     end
 

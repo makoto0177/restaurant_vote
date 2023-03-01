@@ -1,6 +1,5 @@
 <div class="lg:w-1/2 md:w-2/3 mx-auto text-center">
-  <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">VotePage</h1>
-  <p class="text-2xl my-10"><%= @post.title %></p>
+  <h1 class="my-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= @post.title %></h1>
   <%= form_with url: votes_path , local: true do |f| %>
   <% @restaurants.each do |restaurant| %>
     <div class="form-contol mb-5">
@@ -8,6 +7,6 @@
     <%= f.check_box :restaurant_id, {}, restaurant.id, nil %>
     </div>
   <% end %>
-    <%= f.submit 'voting', class: 'btn btn-primary mt-6' %>
+    <%= f.submit (t '.voting'), class: 'btn btn-primary mt-6' %>
   <% end %>
 </div>
