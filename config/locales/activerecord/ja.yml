@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+      restaurant: '飲食店'
+      vote: '投票'
+    attributes:
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      post:
+        title: 'タイトル'

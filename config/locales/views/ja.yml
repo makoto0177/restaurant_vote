@@ -1,0 +1,25 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    search: '検索'
+  users:
+    new:
+      title: '新規登録'
+      login_page: 'ログインページへ'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      register_page: '新規登録ページへ'
+  posts:
+    index:
+      title: '投稿一覧'
+      voting_page: '投票ページへ'
+      vote_result_page: '投票結果ページへ'
+    vote:
+      voting: '投票する'
+  restaurants:
+    search:
+      title: '飲食店検索'
+      

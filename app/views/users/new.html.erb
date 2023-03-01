@@ -1,5 +1,5 @@
 <div class="lg:w-1/2 md:w-2/3">
-  <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Signup</h1>
+  <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t '.title' %></h1>
   <%= form_with model: @user, local: true do |f| %>
     <div class="form-control mb-10">
       <%= f.label :name, class: 'label' %>
@@ -18,8 +18,8 @@
         <%= f.password_field :password_confirmation, class: 'input input-primary' %>
     </div>
     <div class="flex justify-between items-center">
-      <%= f.submit 'signup', class: 'btn btn-primary' %>
-      <%= link_to "Login", login_path, class: 'inline-block mx-30' %>
+      <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+      <%= link_to (t '.login_page'), login_path, class: 'inline-block mx-30' %>
     </div>
   <% end %>
 </div>

@@ -1,13 +1,13 @@
 <div class="container px-5 py-24 mx-auto">
   <div class="flex flex-col text-center w-full mb-12">
     <div class="g:w-1/2 md:w-2/3 mx-auto">
-      <h1 class="my-14 text-center text-3xl font-bold tracking-tight text-gray-900">RestaurantsSearch</h1>    
+      <h1 class="my-14 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t '.title' %></h1>    
       <%= form_with url: restaurants_path, method: :get , local: true do |f| %>
         <div class="form-control mb-10">
-        <%= f.label :search, class: 'label' %>
-        <%= f.search_field :address, class: 'input input-primary', placeholder: 'key word', value: params[:address] %>
+        <%= f.label :search, (t 'defaults.search'), class: 'label' %>
+        <%= f.search_field :search, class: 'input input-primary', placeholder: 'keyword', value: params[:search] %>
         </div>
-        <%= f.submit 'search', class: 'btn btn-primary' %>
+        <%= f.submit (t 'defaults.search'), class: 'btn btn-primary' %>
      <% end %>
     </div>
   </div>
