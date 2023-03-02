@@ -13,8 +13,11 @@ ja:
       title: 'ログイン'
       register_page: '新規登録ページへ'
   posts:
+    new:
+      title: '投票作成'
+      create: '作成する'
     index:
-      title: '投稿一覧'
+      title: '投票一覧'
       voting_page: '投票ページへ'
       vote_result_page: '投票結果ページへ'
     vote:
