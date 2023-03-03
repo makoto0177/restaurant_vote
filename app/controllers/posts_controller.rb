@@ -41,19 +41,23 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, restaurants_attributes: ["0": [name:[]]])
+    params.require(:post).permit(:title, restaurants_attributes: [:name])
   end
 
   def get_hotpepper_res
     uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
     api_key = ENV['HOTPEPPER_API_KEY']
-    url = uri << "?key=" << api_key << "&large_area=Z011" << "&format=json" 
+    url = uri << "?key=" << api_key << "&format=json" 
    
-    if @search = params[:search]
-      url = url << "&keyword=" 
+    if @search_keyword = params[:keyword]
+      url = url << "&keyword=" << URI.encode_www_form_component(@search_keyword)
     end
 
-    res = Net::HTTP.get(URI.parse(url + URI.encode_www_form_component(@search)))
+    if @search_address = params[:address]
+      url = url << "&address=" << URI.encode_www_form_component(@search_address)
+    end
+
+    res = Net::HTTP.get(URI.parse(url))
     @parsed_json = JSON.parse(res)
   end
 end

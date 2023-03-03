@@ -8,11 +8,14 @@
     <%= f.fields_for :restaurants do |restaurant_form| %>
       <% @store_infomations.each do |info| %>
         <div class="form-contol mb-5">
-        <%= restaurant_form.label info['name'] %>
-        <%= restaurant_form.check_box :name, { multiple: true }, info['name'], nil %> 
+          <%= restaurant_form.label info['name'] %>
+          <%= restaurant_form.check_box :name, { multiple: true }, info['name'], nil %> 
         </div>
       <% end %>
     <% end %>
     <%= f.submit (t '.create'), class: 'btn btn-primary' %>
   <% end %>
+  <div class="flex justify-end">
+     <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
+     </div>
 </div>

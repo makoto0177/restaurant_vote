@@ -4,11 +4,18 @@
       <h1 class="my-14 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t '.title' %></h1>    
       <%= form_with url: new_post_path, method: :get , local: true do |f| %>
         <div class="form-control mb-10">
-        <%= f.label :search, (t 'defaults.search'), class: 'label' %>
-        <%= f.search_field :search, class: 'input input-primary', placeholder: 'keyword', value: params[:search] %>
+          <%= f.label :address, (t '.address'), class: 'label' %>
+          <%= f.search_field :address, class: 'input input-primary', value: params[:address] %>
+        </div>
+        <div class="form-control mb-10">
+          <%= f.label :keyword, (t '.search_word'), class: 'label' %>
+          <%= f.search_field :keyword, class: 'input input-primary', value: params[:keyword] %>
         </div>
         <%= f.submit (t 'defaults.search'), class: 'btn btn-primary' %>
      <% end %>
+     <div class="flex justify-end">
+     <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
+     </div>
     </div>
   </div>
 </div>
