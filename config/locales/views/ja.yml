@@ -25,4 +25,6 @@ ja:
   restaurants:
     search:
       title: '飲食店検索'
+      address: '住所'
+      search_word: '検索ワード'
       
