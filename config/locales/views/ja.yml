@@ -20,6 +20,10 @@ ja:
       title: '投票一覧'
       voting_page: '投票ページへ'
       vote_result_page: '投票結果ページへ'
+    show:
+      title: '投票結果'
+      vote_list_page: '投票一覧ページへ'
+      no_vote_results: '投票結果がありません' 
     vote:
       voting: '投票する'
   restaurants:
