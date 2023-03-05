@@ -2,6 +2,7 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
     "autoprefixer": "^10.4.13",
     "chart.js": "^4.2.1",
     "chartkick": "^5.0.1",
