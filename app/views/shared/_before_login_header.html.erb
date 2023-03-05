@@ -1,0 +1,13 @@
+<header>
+  <div class="navbar bg-red-600">
+    <div class="flex-1 ml-3">
+      <%= link_to 'RestaurantVote', root_path, class: 'button text-2xl font-bold' %>
+    </div>
+    <div class="flex-none mr-3">
+      <ul class="flex">
+        <li class="mr-3"><%= link_to (t 'posts.index.title'), posts_path %></li>
+        <li><%= link_to (t 'defaults.login'), login_path %></li>
+      </ul>
+    </div>
+  </div>
+</header>

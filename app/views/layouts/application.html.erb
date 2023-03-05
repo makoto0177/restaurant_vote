@@ -10,18 +10,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <div id="nav">
-      <% if current_user %>
-        <%= link_to "Edit Profile", root_path %>
-        <%= button_to "Logout", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "Register", new_user_path %> 
-        <%= link_to "Login", login_path %>
-      <% end %>
+  <body class="bg-orange-50  min-h-full">
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <div class="flex justify-center items-centerpy-12 px-4">
+      <%= yield %>
     </div>
-  <div class="flex justify-center items-center min-h-full py-12 px-4">
-    <%= yield %>
-  </div>  
+      <%= render 'shared/footer' %>
   </body>
 </html>
