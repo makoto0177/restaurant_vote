@@ -23,6 +23,7 @@ ja:
       create: '作成する'
     index:
       title: '投票一覧'
+      post_title: 'タイトル'
       voting_page: '投票ページへ'
       vote_result_page: '投票結果ページへ'
     show:
@@ -34,6 +35,6 @@ ja:
   restaurants:
     search:
       title: '飲食店検索'
-      address: '住所'
+      address: '地名（必須）'
       search_word: '検索ワード'
       

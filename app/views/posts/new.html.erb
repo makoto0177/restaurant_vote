@@ -3,17 +3,17 @@
     <%= form_with model: @post, local: true do |f| %>
       <div class="form-control mb-10">
         <%= f.label :title, class: 'label' %>
-        <%= f.text_field :title, class: 'input input-primary' %>
+        <%= f.text_field :title, required: true ,class: 'input input-primary' %>
       </div>
-      <%= f.fields_for :restaurants do |restaurant_form| %>
-        <% @store_infomations.each do |info| %>
+      <% @store_names.each do |name| %>
+        <%= f.fields_for :restaurants do |restaurant_form| %>
           <div class="form-contol mb-5">
-            <%= restaurant_form.label info['name'] %>
-            <%= restaurant_form.check_box :name, { multiple: true }, info['name'], nil %> 
+            <%= restaurant_form.label name %>
+            <%= restaurant_form.check_box :name, {}, name, nil %> 
           </div>
         <% end %>
       <% end %>
-      <%= f.submit (t '.create'), class: 'btn btn-primary' %>
+        <%= f.submit (t '.create'), class: 'btn btn-primary' %>
     <% end %>
   <div class="flex justify-end">
      <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
