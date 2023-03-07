@@ -1,6 +1,6 @@
 <div class="card w-96 h-72 bg-base-200 mx-auto my-12">
   <div class="card-body items-center text-center">
-    <h2 class="card-title my-4 text-2xl"><%= Post.human_attribute_name(:title) %>:<%= post.title %></h2>
+    <h2 class="card-title my-4 text-2xl"><%= t ('posts.index.post_title') %>:<%= post.title %></h2>
     <h2 class="card-title mb-4 text-2xl"><%= User.model_name.human %>:<%= post.user.name %></h2>
     <div class="card-actions justify-end">
       <%= link_to (t 'posts.index.voting_page'), vote_post_path(post), class: 'btn btn-accent' %>

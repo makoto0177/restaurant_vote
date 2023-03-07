@@ -6,12 +6,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.restaurants.build
-    @store_infomations = @parsed_json['results']['shop']
-    @store_names = []
-    @store_infomations.each do |info|
-      @store_names << info['name']
-    end
+    @post.restaurants.build     
   end
 
   def create
@@ -19,7 +14,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render :new
+      redirect_to search_restaurants_path
     end
   end
 
@@ -61,5 +56,11 @@ class PostsController < ApplicationController
 
     res = Net::HTTP.get(URI.parse(url))
     @parsed_json = JSON.parse(res)
+
+    @store_infomations = @parsed_json['results']['shop']
+    @store_names = []
+    @store_infomations.each do |info|
+      @store_names << info['name']
+    end
   end
 end
