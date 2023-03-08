@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   require 'net/http'
   require 'JSON'
 
-  before_action :get_hotpepper_res, only: [:new]
+  skip_before_action :require_login, only: %i[index show]
+  before_action :get_hotpepper_res, only: %i[new]
 
   def new
     @post = Post.new
@@ -26,8 +27,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @restaurants = @post.restaurants
     @restaurant_count = @restaurants.map { |restaurant| [restaurant.name, restaurant.votes.count] }.to_h
-    # @charts = @restaurants.vote.group(:restaurant_id).count
-    # @chart = {'飲食店aaa'=>2, '飲食店bbb'=>1}
   end  
 
   def vote
