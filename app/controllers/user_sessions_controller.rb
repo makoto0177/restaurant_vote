@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_to posts_path
+      redirect_to search_restaurants_path
     else
       render action: 'new'
     end

@@ -4,11 +4,9 @@ ja:
     register: '登録'
     logout: 'ログアウト'
     search: '検索'
-    restaurant_vote: '飲食店投票'
     terms_of_use: '利用規約'
     privacy_policy: 'プライバシーポリシー'
     contact: 'お問い合わせ'
-    restaurant_search_page: '飲食店検索ページへ'
   users:
     new:
       title: '新規登録'
@@ -34,7 +32,7 @@ ja:
       voting: '投票する'
   restaurants:
     search:
-      title: '飲食店検索'
+      title: '飲食店を検索する'
       address: '地名（必須）'
-      search_word: '検索ワード'
+      search_word: 'お店ジャンル（任意）'
       
