@@ -1,11 +1,11 @@
 <div class="lg:w-3/4 md:w-2/3 mx-auto text-center">
   <div class="hero hero-content flex-col my-32">
-    <h1 class="my-6 text-center text-6xl font-bold tracking-tight text-gray-900"><%= t('defaults.restaurant_vote') %></h1>
-    <P>友達・家族とご飯を食べに行くときに、<br>
+    <h1 class="my-6 text-center text-6xl font-bold tracking-tight text-gray-900">Voteat</h1>
+    <P class="text-xl">友達・家族とご飯を食べに行くときに、<br>
       飲食店をみんなで投票して決めることができるサービスです。
     </P>
   </div>
-  <div class="my-32">
+  <div class="my-28">
     <h2 class="my-6 text-center text-4xl font-bold">使い方</h2>
     <div class="flex justify-center">
       <div class="card m-6 w-96 bg-orange-50 shadow-xl">
@@ -13,18 +13,12 @@
           <h3 class="card-title">1.飲食店を探そう</h3>
           <p>近くの飲食店を検索することができます</p>
         </div>
-        <figure class="px-10 pt-10">
-          <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-        </figure>
       </div>
       <div class="card m-6 w-96 bg-orange-50 shadow-xl">
         <div class="card-body items-center text-center">
           <h3 class="card-title">2.投票を作成しよう</h3>
           <p>探した飲食店から投票を作成できます</p>
         </div>
-        <figure class="px-10 pt-10">
-          <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-        </figure>
       </div>
     </div>
     <div class="flex justify-center">
@@ -33,22 +27,20 @@
           <h3 class="card-title">3.投票してみよう</h3>
           <p>選んだ飲食店を投票することができます</p>
         </div>
-        <figure class="px-10 pt-10">
-          <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-        </figure>
       </div>
       <div class="card m-6 w-96 bg-orange-50 shadow-xl">
         <div class="card-body items-center text-center">
           <h3 class="card-title">4.投票結果を見る</h3>
           <p>投票結果を確認することができます</p>
         </div>
-        <figure class="px-10 pt-10">
-          <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-        </figure>
       </div>
     </div>
-    <button class="mt-12">
-      <%= link_to (t 'defaults.restaurant_search_page'), search_restaurants_path, class: 'btn btn-accent' %>
-    </button>
+    <div class="mt-12">
+      <p>ログインして飲食店を検索する</p>
+      <button class="mt-6">
+        <%= link_to 'ログインページへ', login_path, class: 'btn bg-red-600 border-red-600' %>
+      </button>
+    </div>
   </div>
 </div>
+ 
