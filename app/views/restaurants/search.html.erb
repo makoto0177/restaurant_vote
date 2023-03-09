@@ -5,11 +5,11 @@
       <%= form_with url: new_post_path, method: :get , local: true do |f| %>
         <div class="form-control mb-10">
           <%= f.label :address, (t '.address'), class: 'label' %>
-          <%= f.search_field :address, class: 'input input-primary', value: params[:address], required: true %>
+          <%= f.search_field :address, class: 'input input-primary', value: params[:address], required: true, placeholder: '市町村名など' %>
         </div>
         <div class="form-control mb-10">
           <%= f.label :keyword, (t '.search_word'), class: 'label' %>
-          <%= f.search_field :keyword, class: 'input input-primary', value: params[:keyword] %>
+          <%= f.search_field :keyword, class: 'input input-primary', value: params[:keyword], placeholder: '和食、洋食など' %>
         </div>
         <%= f.submit (t 'defaults.search'), class: 'btn btn-primary' %>
      <% end %>

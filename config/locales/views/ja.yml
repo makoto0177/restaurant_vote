@@ -32,7 +32,7 @@ ja:
       voting: '投票する'
   restaurants:
     search:
-      title: '飲食店検索'
+      title: '飲食店を検索する'
       address: '地名（必須）'
-      search_word: '検索ワード'
+      search_word: 'お店ジャンル（任意）'
       
