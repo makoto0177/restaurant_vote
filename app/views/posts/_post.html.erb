@@ -1,10 +1,12 @@
-<div class="card h-72 bg-base-200 mx-auto my-12">
-  <div class="card-body items-center text-center">
-    <h2 class="card-title my-4 text-2xl"><%= t ('posts.index.post_title') %>:<%= post.title %></h2>
-    <h2 class="card-title mb-4 text-2xl"><%= User.model_name.human %>:<%= post.user.name %></h2>
-    <div class="card-actions justify-end">
-      <%= link_to (t 'posts.index.voting_page'), vote_post_path(post), class: 'btn btn-accent' %>
-      <%= link_to (t 'posts.index.vote_result_page'), post_path(post), class: 'btn btn-accent' %>
+<div class="w-1/3">
+  <div class="card w-80 h-72 bg-base-200 mx-auto my-6">
+    <div class="card-body items-center text-center">
+      <h2 class="card-title my-4 text-2xl"><%= t ('posts.index.post_title') %>:<%= post.title %></h2>
+      <h2 class="card-title mb-4 text-2xl"><%= User.model_name.human %>:<%= post.user.name %></h2>
+      <div class="card-actions justify-center">
+        <%= link_to (t 'posts.index.voting_page'), vote_post_path(post), class: 'btn btn-accent' %>
+        <%= link_to (t 'posts.index.vote_result_page'), post_path(post), class: 'btn btn-accent' %>
+      </div>
     </div>
   </div>
 </div>
