@@ -6,11 +6,13 @@
           <%= f.label :title, class: 'label' %>
           <%= f.text_field :title, required: true ,class: 'input input-primary' %>
         </div>
-        <% @store_names.each do |name| %>
+        <% @store_infomations.each do |info| %>
           <%= f.fields_for :restaurants do |restaurant_form| %>
-            <div class="form-contol mb-5">
-              <%= restaurant_form.label name %>
-              <%= restaurant_form.check_box :name, {}, name, nil %> 
+            <div class="form-contol flex items-center justify-between mb-5">
+              <!-- <%= restaurant_form.label info['name'] %> -->
+              <%= image_tag info['photo']['mobile']['l'] %>
+              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-xl' %>
+              <%= restaurant_form.check_box :name, {class: 'w-5 h-5'}, info['name'], nil %> 
             </div>
           <% end %>
         <% end %>
