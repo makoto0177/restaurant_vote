@@ -57,9 +57,5 @@ class PostsController < ApplicationController
     @parsed_json = JSON.parse(res)
 
     @store_infomations = @parsed_json['results']['shop']
-    @store_names = []
-    @store_infomations.each do |info|
-      @store_names << info['name']
-    end
   end
 end
