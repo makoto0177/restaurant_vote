@@ -6,14 +6,15 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_to search_restaurants_path
+      redirect_to search_restaurants_path, success: t('.success')
     else
-      render action: 'new'
+      flash.now[:error] = t('.fail')
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to root_path
+    redirect_to root_path, success: t('.success')
   end
 end

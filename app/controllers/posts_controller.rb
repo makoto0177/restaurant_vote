@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, success: t('.success')
     else
       redirect_to search_restaurants_path
     end
@@ -57,9 +57,5 @@ class PostsController < ApplicationController
     @parsed_json = JSON.parse(res)
 
     @store_infomations = @parsed_json['results']['shop']
-    @store_names = []
-    @store_infomations.each do |info|
-      @store_names << info['name']
-    end
   end
 end

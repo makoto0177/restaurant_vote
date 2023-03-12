@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to search_restaurants_path
+      redirect_to search_restaurants_path, success: t('.success')
     else
-      render :new
+      flash.now[:error] = t('.fail')
+      render :new, status: :unprocessable_entity
     end
   end
 
