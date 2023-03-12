@@ -17,10 +17,18 @@ ja:
     new:
       title: '新規登録'
       login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録しログインしました'
+      fail: 'ユーザー登録に失敗しました'  
   user_sessions:
     new:
       title: 'ログイン'
       register_page: '新規登録ページへ'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'  
   posts:
     new:
       title: '投票作成'
@@ -36,9 +44,15 @@ ja:
       no_vote_results: '投票結果がありません' 
     vote:
       voting: '投票する'
+    create:
+      success: '投票を作成しました'  
   restaurants:
     search:
       title: '飲食店を検索する'
       address: '地名（必須）'
       search_word: 'お店ジャンル（任意）'
+  votes:
+    create:
+      success: '投票しました'
+      fail: '投票に失敗しました'
       

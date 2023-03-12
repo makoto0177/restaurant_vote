@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, success: t('.success')
     else
       redirect_to search_restaurants_path
     end

@@ -4,11 +4,10 @@ class VotesController < ApplicationController
     @vote = Vote.create(user: current_user, restaurant: restaurant)
     @post = Post.find_by(id: restaurant.post_id)
     if @vote.save
-      redirect_to root_path
+      redirect_to root_path, success: t('.success')
     else
-      redirect_to vote_post_path(@post)
+      flash.now[:error] = t('.fail')
+      render template: "posts/vote", status: :unprocessable_entity
     end
   end
-
-
 end
