@@ -5,11 +5,8 @@
     <% if @restaurant_count.empty? %>
       <p class="text-xl my-3"><%= t('.no_vote_results') %></p>
     <% else %>
-      <%= pie_chart @restaurant_count %>
+      <%= bar_chart @restaurant_count, empty: "投票結果がありません" %>
     <% end %>
-    <% @restaurants.each do |restaurant| %>
-        <p class="my-6 text-2xl"><%= restaurant.name %>投票数：<%= restaurant.votes.count %><p>
-    <% end %>
-    <%= link_to (t '.vote_list_page'), posts_path, class: 'btn btn-accent mt-3' %>
+    <%= link_to (t '.vote_list_page'), posts_path, class: 'btn btn-accent mt-12' %>
   </div>
 </div>
