@@ -46,7 +46,7 @@ ja:
     vote:
       voting: '投票する'
     create:
-      success: '投票を作成しました'  
+      success: '投票を作成しました'
   restaurants:
     search:
       title: '飲食店を検索する'
