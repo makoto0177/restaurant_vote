@@ -33,6 +33,7 @@ ja:
     new:
       title: '投票作成'
       create: '作成する'
+      re_restaurant_search: 'もう一度飲食店を検索する'
     index:
       title: '投票一覧'
       post_title: 'タイトル'
