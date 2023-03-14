@@ -8,8 +8,7 @@ class VotesController < ApplicationController
     else
       @post = Post.find(params[:id])
       @restaurants = Restaurant.where(post_id: @post.id)
-      flash.now[:error] = t('.fail')
-      render template: "posts/vote", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 end
