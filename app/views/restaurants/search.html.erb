@@ -6,13 +6,13 @@
         <%= form_with url: new_post_path, method: :get , local: true do |f| %>
           <div class="form-control mb-10">
             <%= f.label :address, (t '.address'), class: 'label' %>
-            <%= f.search_field :address, class: 'input input-primary', value: params[:address], required: true, placeholder: '市町村名など' %>
+            <%= f.search_field :address, class: 'input input-bordered', value: params[:address], required: true, placeholder: '市町村名など' %>
           </div>
           <div class="form-control mb-10">
             <%= f.label :keyword, (t '.search_word'), class: 'label' %>
-            <%= f.search_field :keyword, class: 'input input-primary', value: params[:keyword], placeholder: '和食、洋食など' %>
+            <%= f.search_field :keyword, class: 'input input-bordered', value: params[:keyword], placeholder: '和食、洋食など' %>
           </div>
-          <%= f.submit (t 'defaults.search'), class: 'btn bg-red-600 border-red-600' %>
+          <%= f.submit (t 'defaults.search'), class: 'btn btn-primary' %>
       <% end %>
       <div class="flex justify-end">
       <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
