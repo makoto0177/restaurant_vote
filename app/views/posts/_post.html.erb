@@ -2,7 +2,7 @@
   <div class="card w-80 h-101 bg-base-100 mx-auto my-6">
     <div class="card-body items-center text-center">
       <h2 class="card-title my-4 text-xl"><%= post.title %></h2>
-      <figure><%= image_tag src="/assets/undraw_voting_nvu7.png" %></figure>
+      <figure><%= image_tag '/assets/undraw_voting_nvu7.png' %></figure>
       <div class="card-actions flex">
         <%= link_to (t 'posts.index.voting_page'), vote_post_path(post), class: 'btn btn-sm bg-red-700 border-red-700' %>
         <%= link_to (t 'posts.index.vote_result_page'), post_path(post), class: 'btn btn-sm bg-red-700 border-red-700' %>
