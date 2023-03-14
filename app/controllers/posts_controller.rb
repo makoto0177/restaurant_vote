@@ -56,6 +56,6 @@ class PostsController < ApplicationController
     res = Net::HTTP.get(URI.parse(url))
     @parsed_json = JSON.parse(res)
 
-    @store_infomations = @parsed_json['results']['shop']
+    @store_informations = @parsed_json['results']['shop']
   end
 end

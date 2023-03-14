@@ -7,6 +7,8 @@ ja:
     terms_of_use: '利用規約'
     privacy_policy: 'プライバシーポリシー'
     contact: 'お問い合わせ'
+    message:
+      require_login: 'ログインしてください'
   views:
     pagination:
       first: '最初'
@@ -33,6 +35,7 @@ ja:
     new:
       title: '投票作成'
       create: '作成する'
+      re_restaurant_search: 'もう一度飲食店を検索する'
     index:
       title: '投票一覧'
       post_title: 'タイトル'
@@ -45,7 +48,7 @@ ja:
     vote:
       voting: '投票する'
     create:
-      success: '投票を作成しました'  
+      success: '投票を作成しました'
   restaurants:
     search:
       title: '飲食店を検索する'
