@@ -4,11 +4,11 @@
     <%= form_with url: login_path, method: :post, local: true do |f| %>
       <div class="form-control mb-10">
         <%= f.label :email, User.human_attribute_name(:email) ,class: 'label' %>
-        <%= f.email_field :email, class: 'input input-primary' %>
+        <%= f.email_field :email, class: 'input input-bordered' %>
       </div>
       <div class="form-control mb-10">
         <%= f.label :password, User.human_attribute_name(:password) ,class: 'label' %>
-        <%= f.password_field :password, class: 'input input-primary' %>
+        <%= f.password_field :password, class: 'input input-bordered' %>
       </div>
       <div class="flex justify-between items-center">
         <%= f.submit (t 'defaults.login'), class: 'btn btn-primary' %>
