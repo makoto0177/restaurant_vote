@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end  
 
   def vote
+    @vote = Vote.new
     @post = Post.find(params[:id])
     @restaurants = Restaurant.where(post_id: @post.id)
   end
