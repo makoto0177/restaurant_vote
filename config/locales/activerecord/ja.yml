@@ -13,3 +13,5 @@ ja:
         password_confirmation: 'パスワード確認'
       post:
         title: 'タイトル（必須）'
+      vote:
+        user_id: 'このお店には'  

@@ -2,6 +2,7 @@
   <div class="lg:w-1/2 md:w-2/3 min-h-screen">
     <h1 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t '.title' %></h1>
     <%= form_with model: @user, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
       <div class="form-control mb-10">
         <%= f.label :name, class: 'label' %>
         <%= f.text_field :name, class: 'input input-bordered' %>
