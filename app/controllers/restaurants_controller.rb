@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   require 'net/http'
-  require 'JSON'
+  require 'json'
 
   def new
     @restaurant = Restaurant.new

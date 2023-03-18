@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   require 'net/http'
-  require 'JSON'
+  require 'json'
 
   skip_before_action :require_login, only: %i[index show]
   before_action :get_hotpepper_res, only: %i[new]
