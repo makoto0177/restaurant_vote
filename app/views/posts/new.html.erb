@@ -11,7 +11,8 @@
           <p class="text-2xl my-10">検索結果が0件です
           </p>
           <%= link_to (t '.re_restaurant_search'),  search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
-        <% else %>  
+        <% else %>
+          <p class="mb-10 text-xl">投票したいお店を選択してください</p>  
           <% @store_informations.each do |info| %>
             <%= f.fields_for :restaurants do |restaurant_form| %>
               <div class="form-contol flex items-center justify-between mb-5">
