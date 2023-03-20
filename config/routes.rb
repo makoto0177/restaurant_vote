@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
   resources :users, only: %i[new create]
-  resources :posts, only: %i[index new create show] do
+  resources :posts, only: %i[index new create show destroy] do
     member do
       get 'vote'
     end

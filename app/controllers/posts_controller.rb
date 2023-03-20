@@ -23,6 +23,12 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy!
+    redirect_to posts_path, success: t('.success'), status: :see_other
+  end
+
   def show
     @post = Post.find(params[:id])
     @restaurants = @post.restaurants
@@ -43,7 +49,7 @@ class PostsController < ApplicationController
 
   def get_hotpepper_res
     uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
-    api_key = ENV['HOTPEPPER_API_KEY']
+    api_key = Rails.application.credentials.hotpepper_api_key
     url = uri << "?key=" << api_key << "&format=json" 
    
     if @search_keyword = params[:keyword]
