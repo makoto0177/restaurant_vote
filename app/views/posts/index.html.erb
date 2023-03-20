@@ -1,7 +1,13 @@
 <div class="items-center py-12 px-4 min-h-screen">
     <h1 class="mb-14 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t '.title' %></h1>
-  <div class="flex flex-wrap mx-16">
-    <%= render @posts %>  
-  </div>
+    <% if @posts.present? %>
+      <div class="flex flex-wrap mx-16">
+        <%= render @posts %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <p class="text-2xl"><%= t '.no_result' %></p>
+      </div>
+    <% end %>
     <%= paginate @posts %>
 </div>

@@ -41,10 +41,15 @@ ja:
       post_title: 'タイトル'
       voting_page: '投票ページへ'
       vote_result_page: '投票結果ページへ'
+      no_result: '投票がありません'
+      vote_delete: '投票削除'
+      vote_delete_confirm: '投票を削除しますか？'
+    destroy:
+      success: '投票を削除しました'
     show:
       title: '投票結果'
       vote_list_page: '投票一覧ページへ'
-      no_vote_results: '投票結果がありません' 
+      no_result: '投票結果がありません' 
     vote:
       voting: '投票する'
     create:
