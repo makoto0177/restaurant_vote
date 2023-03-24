@@ -1,38 +1,38 @@
-<div class="flex justify-center items-center py-12 px-4">
+<div class="flex flex-col md:flex-row justify-center items-center py-12 px-4">
   <div class="lg:w-3/4 md:w-2/3 mx-auto text-center">
-    <div class="hero hero-content flex-col my-32">
+    <div class="hero hero-content flex-col my-12 lg:my-32">
       <h1 class="my-6 text-center text-6xl font-bold tracking-tight text-gray-900">Voteat</h1>
-      <P class="text-xl">友達・家族とご飯を食べに行くときに、<br>
+      <P class="text-xl text-center md:text-left">友達・家族とご飯を食べに行くときに、<br class="md:hidden">
         飲食店をみんなで投票して決めることができるサービスです。
       </P>
     </div>
-    <div class="my-28">
+    <div class="my-14 lg:my-28">
       <h2 class="my-6 text-center text-4xl font-bold">使い方</h2>
-      <div class="flex justify-center">
-        <div class="card m-6 w-96 bg-base-100 shadow-xl">
+      <div class="flex flex-col md:flex-row justify-center">
+        <div class="card m-6 md:w-1/2 bg-base-100 shadow-xl">
           <div class="card-body items-center text-center">
             <h3 class="card-title">1.飲食店を探そう</h3>
             <p>近くの飲食店を検索することができます</p>
             <figure><%= image_tag 'undraw_Searching_re_3ra9.png' %></figure>
           </div>
         </div>
-        <div class="card m-6 w-96 bg-base-100 shadow-xl">
+        <div class="card m-6 md:w-1/2 bg-base-100 shadow-xl">
           <div class="card-body items-center text-center">
             <h3 class="card-title">2.投票を作成しよう</h3>
             <p>探した飲食店から投票を作成できます</p>
-            <figure><%= image_tag 'undraw_Add_notes_re_ln36.png' %></figure>
-          </div>
+          <figure><%= image_tag 'undraw_Add_notes_re_ln36.png' %></figure>
         </div>
       </div>
-      <div class="flex justify-center">
-        <div class="card m-6 w-96 bg-base-100 shadow-xl">
-          <div class="card-body items-center align-center">
+    </div>
+      <div class="flex flex-col md:flex-row justify-center">
+        <div class="card m-6 md:w-1/2 bg-base-100 shadow-xl">
+          <div class="card-body items-center text-center">
             <h3 class="card-title">3.投票してみよう</h3>
             <p>選んだ飲食店に投票することができます</p>
             <figure><%= image_tag 'undraw_election_day_w842.png' %></figure>
           </div>
         </div>
-        <div class="card m-6 w-96 bg-base-100 shadow-xl">
+        <div class="card m-6 md:w-1/2 bg-base-100 shadow-xl">
           <div class="card-body items-center text-center">
             <h3 class="card-title">4.投票結果を見る</h3>
             <p>投票結果を確認することができます</p>
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-12">
+      <div class="mt-12 text-center">
         <p>ログインして飲食店を検索する</p>
         <button class="mt-6">
           <%= link_to 'ログインページへ', login_path, class: 'btn bg-red-600 border-red-600' %>
