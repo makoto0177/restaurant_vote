@@ -3,7 +3,7 @@
     <%= link_to 'Voteat', root_path, class: 'button text-2xl font-bold' %>
   </div>
   <div class="flex-none mr-3">
-    <ul class="flex">
+    <ul class="flex text-xs lg:text-base">
       <li class="mr-3"><%= link_to (t 'restaurants.search.title'), search_restaurants_path %></li>
       <li class="mr-3"><%= link_to (t 'posts.index.title'), posts_path %></li>
       <li><%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %></li>

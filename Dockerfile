@@ -12,7 +12,7 @@ WORKDIR /rails
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development:test" \
-    BUNDLE_DEPLOYMENT="1"
+    BUNDLE_DEPLOYMENT="1" 
 
 # Update gems and bundler
 RUN gem update --system --no-document && \
