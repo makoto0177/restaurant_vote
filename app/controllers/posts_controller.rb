@@ -12,10 +12,19 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    
+    if params[:post][:selected_restaurants].present?
+      params[:post][:selected_restaurants].each do |restaurant_name|
+        @post.restaurants.build(name: restaurant_name)
+      end
+    end
+
     if @post.save
       redirect_to posts_path, success: t('.success')
     else
-      redirect_to search_restaurants_path
+      get_hotpepper_res
+      flash.now[:error] = t('.fail')
+      render :new
     end
   end
 
@@ -44,7 +53,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, restaurants_attributes: [:name])
+    params.require(:post).permit(:title)
   end
 
   def get_hotpepper_res
@@ -63,6 +72,6 @@ class PostsController < ApplicationController
     res = Net::HTTP.get(URI.parse(url))
     @parsed_json = JSON.parse(res)
 
-    @store_informations = @parsed_json['results']['shop']
+    @store_informations = @parsed_json['results']['shop'] || []
   end
 end
