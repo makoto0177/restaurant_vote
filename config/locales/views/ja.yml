@@ -54,6 +54,7 @@ ja:
       voting: '投票する'
     create:
       success: '投票を作成しました'
+      fail: '投票の作成に失敗しました'
   restaurants:
     search:
       title: '飲食店を検索する'

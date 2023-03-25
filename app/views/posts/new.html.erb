@@ -14,13 +14,11 @@
         <% else %>
           <p class="mb-10 text-xl">投票したいお店を選択してください</p>  
           <% @store_informations.each do |info| %>
-            <%= f.fields_for :restaurants do |restaurant_form| %>
-              <div class="form-contol flex items-center justify-between mb-5 text-center">
-                <%= image_tag info['photo']['mobile']['l'] %>
-                <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
-                <%= restaurant_form.check_box :name, {class: 'w-5 h-5'}, info['name'], nil %> 
-              </div>
-            <% end %>
+            <div class="form-contol flex items-center justify-between mb-5 text-center">
+              <%= image_tag info['photo']['mobile']['l'] %>
+              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
+              <%= check_box_tag "post[selected_restaurants][]", info['name'], false, class: 'w-5 h-5' %>
+            </div>
           <% end %>
           <div class="flex flex-col justify-center">
             <div>
