@@ -14,11 +14,13 @@
         <% else %>
           <p class="mb-10 text-xl">投票したいお店を選択してください</p>  
           <% @store_informations.each do |info| %>
-            <div class="form-contol flex items-center justify-between mb-5 text-center">
-              <%= image_tag info['photo']['mobile']['l'] %>
-              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
-              <%= check_box_tag "post[selected_restaurants][]", info['name'], false, class: 'w-5 h-5' %>
-            </div>
+          <div class="form-contol flex items-center justify-between mb-5 text-center">
+            <%= image_tag info['photo']['mobile']['l'] %>
+            <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
+            <%= check_box_tag "post[selected_restaurants][name][]", info['name'], false, class: 'w-5 h-5' %>
+            <%= hidden_field_tag "post[selected_restaurants][image][]", info['photo']['mobile']['l'] %>
+            <%= hidden_field_tag "post[selected_restaurants][url][]", info['urls']['pc'] %>
+          </div>
           <% end %>
           <div class="flex flex-col justify-center">
             <div>
