@@ -11,26 +11,31 @@ class PostsController < ApplicationController
   end
 
   def create
-  @post = current_user.posts.build(post_params)
-
-  if params[:post][:selected_restaurants].present?
-    params[:post][:selected_restaurants][:name].each_with_index do |restaurant_name, index|
-      @post.restaurants.build(
-        name: restaurant_name,
-        image: params[:post][:selected_restaurants][:image][index],
-        url: params[:post][:selected_restaurants][:url][index]
-      )
+    @post = current_user.posts.build(post_params)
+  
+    if params[:post][:selected_restaurants].present? && params[:post][:selected_restaurants][:name]&.any?
+      params[:post][:selected_restaurants][:name].each_with_index do |restaurant_name, index|
+        @post.restaurants.build(
+          name: restaurant_name,
+          image: params[:post][:selected_restaurants][:image][index],
+          url: params[:post][:selected_restaurants][:url][index]
+        )
+      end
+    else
+      flash.now[:error] = '少なくとも1つのレストランを選択してください。'
+      get_hotpepper_res
+      render :new
+      return
+    end
+  
+    if @post.save
+      redirect_to posts_path, success: t('.success')
+    else
+      get_hotpepper_res
+      flash.now[:error] = t('.fail')
+      render :new
     end
   end
-
-  if @post.save
-    redirect_to posts_path, success: t('.success')
-  else
-    get_hotpepper_res
-    flash.now[:error] = t('.fail')
-    render :new
-  end
-end
 
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
