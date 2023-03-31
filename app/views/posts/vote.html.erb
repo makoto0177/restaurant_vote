@@ -6,8 +6,9 @@
     <%= form_with model: @vote, url: votes_path, local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <% @restaurants.each do |restaurant| %>
-      <div class="form-contol mb-5">
-      <%= f.label restaurant.name, class: 'text-xl' %>
+      <div class="form-contol flex items-center justify-between mb-5 text-center">
+      <%= image_tag restaurant.image %>   
+      <%= link_to restaurant.name, restaurant.url , class: 'text-blue-700 text-base lg:text-xl' %>
       <%= f.radio_button :restaurant_id, restaurant.id %>
       </div>
     <% end %>
