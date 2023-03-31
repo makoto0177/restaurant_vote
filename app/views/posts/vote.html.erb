@@ -6,13 +6,25 @@
     <%= form_with model: @vote, url: votes_path, local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <% @restaurants.each do |restaurant| %>
-      <div class="form-contol flex items-center justify-between mb-5 text-center">
-      <%= image_tag restaurant.image %>   
-      <%= link_to restaurant.name, restaurant.url , class: 'text-blue-700 text-base lg:text-xl' %>
-      <%= f.radio_button :restaurant_id, restaurant.id %>
-      </div>
+  <div class="form-contol flex items-center justify-between mb-5 text-center">
+    <% if restaurant.image.present? %>
+      <%= image_tag restaurant.image %>
     <% end %>
+  
+    <% if restaurant.url.present? %>
+      <%= link_to restaurant.name, restaurant.url, class: 'text-blue-700 text-base lg:text-xl' %>
+    <% else %>
+      <%= f.label restaurant.name, class: 'text-base lg:text-xl' %>
+    <% end %>
+    <%= f.radio_button :restaurant_id, restaurant.id %>
+  </div>
+<% end %>
+
       <%= f.submit (t '.voting'), class: 'btn btn-primary mt-6' %>
     <% end %>
+    <div>
+      <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
+      <p>【画像提供：ホットペッパー グルメ】</p>
+    </div>
   </div>
 </div>
