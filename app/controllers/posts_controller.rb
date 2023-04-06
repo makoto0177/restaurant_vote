@@ -6,29 +6,13 @@ class PostsController < ApplicationController
   before_action :get_hotpepper_res, only: %i[new]
 
   def new
-    @post = Post.new
-    @post.restaurants.build     
+    @post_form = PostForm.new
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post_form = PostForm.new(post_form_params.merge(user: current_user))
   
-    if params[:post][:selected_restaurants].present? && params[:post][:selected_restaurants][:name]&.any?
-      params[:post][:selected_restaurants][:name].each_with_index do |restaurant_name, index|
-        @post.restaurants.build(
-          name: restaurant_name,
-          image: params[:post][:selected_restaurants][:image][index],
-          url: params[:post][:selected_restaurants][:url][index]
-        )
-      end
-    else
-      flash.now[:error] = '少なくとも1つのレストランを選択してください。'
-      get_hotpepper_res
-      render :new
-      return
-    end
-  
-    if @post.save
+    if @post_form.save
       redirect_to posts_path, success: t('.success')
     else
       get_hotpepper_res
@@ -61,8 +45,8 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(:title, selected_restaurants_attributes: [:name, :image, :url])
+  def post_form_params
+    params.require(:post_form).permit(:title, selected_restaurants: [:name, :image, :url])
   end
 
   def get_hotpepper_res

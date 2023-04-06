@@ -1,7 +1,7 @@
 <div class="flex justify-center items-center py-12 px-4">
   <div class="lg:w-1/2 md:w-2/3 mx-auto text-center min-h-screen">
     <h1 class="my-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t ('.title') %></h1>
-    <%= form_with model: @post_form, local: true do |f| %>
+    <%= form_with model: @post_form, url: posts_path, local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-control mb-10">
         <%= f.label :title, class: 'label' %>
@@ -13,7 +13,7 @@
       <% else %>
         <p class="mb-10 text-xl">投票したいお店を選択してください</p>
         <% @store_informations.each do |info| %>
-          <%= f.fields_for :selected_restaurants, index: info['id'] do |field_f| %>
+          <%= f.fields_for :selected_restaurants do |field_f| %>
             <div class="form-contol flex items-center justify-between mb-5 text-center">
               <%= image_tag info['photo']['mobile']['l'] %>
               <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
