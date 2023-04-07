@@ -12,17 +12,18 @@
         <%= link_to (t '.re_restaurant_search'), search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
       <% else %>
         <p class="mb-10 text-xl">投票したいお店を選択してください</p>
-        <% @store_informations.each do |info| %>
-          <%= f.fields_for :selected_restaurants do |field_f| %>
-            <div class="form-contol flex items-center justify-between mb-5 text-center">
-              <%= image_tag info['photo']['mobile']['l'] %>
-              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
-              <%= field_f.check_box :name, { class: 'w-5 h-5' }, info['name'], nil %>
-              <%= field_f.hidden_field :image, value: info['photo']['mobile']['l'] %>
-              <%= field_f.hidden_field :url, value: info['urls']['pc'] %>
-            </div>
-          <% end %>
+        <% @store_informations.each_with_index do |info, index| %>
+        <%= f.fields_for :restaurants, info do |field_f| %>
+          <div class="form-contol flex items-center justify-between mb-5 text-center">
+            <%= image_tag info['photo']['mobile']['l'] %>
+            <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
+            <%= field_f.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
+            <%= field_f.hidden_field :image, value: info['photo']['mobile']['l'] %>
+            <%= field_f.hidden_field :url, value: info['urls']['pc'] %>
+          </div>
         <% end %>
+      <% end %>
+      
         <div class="flex flex-col justify-center">
           <div>
             <%= f.submit (t '.create'), class: 'btn btn-primary mt-10' %>

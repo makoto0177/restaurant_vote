@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post_form = PostForm.new(post_form_params.merge(user: current_user))
+    @post_form = PostForm.new(post_form_params)
   
     if @post_form.save
       redirect_to posts_path, success: t('.success')
@@ -46,9 +46,9 @@ class PostsController < ApplicationController
   private
 
   def post_form_params
-    params.require(:post_form).permit(:title, selected_restaurants: [:name, :image, :url])
+    params.require(:post_form).permit(:title, restaurants: [:name, :image, :url])
   end
-
+  
   def get_hotpepper_res
     uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
     api_key = Rails.application.credentials.hotpepper_api_key
