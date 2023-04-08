@@ -1,43 +1,50 @@
 <div class="flex justify-center items-center py-12 px-4">
-  <div class="lg:w-1/2 md:w-2/3 mx-auto text-center min-h-screen">
+  <div class="lg:w-1/2 md:w-2/3 mx-auto text-center  min-h-screen">
     <h1 class="my-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t ('.title') %></h1>
-    <%= form_with model: @post_form, url: posts_path, local: true do |f| %>
+      <%= form_with model: @post, local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <div class="form-control mb-10">
-        <%= f.label :title, class: 'label' %>
-        <%= f.text_field :title, required: true ,class: 'input input-bordered' %>
-      </div>
-      <% if @store_informations.empty? %>
-        <p class="text-2xl my-10">検索結果が0件です</p>
-        <%= link_to (t '.re_restaurant_search'), search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
-      <% else %>
+        <div class="form-control mb-10">
+          <%= f.label :title, class: 'label' %>
+          <%= f.text_field :title, required: true ,class: 'input input-bordered' %>
+        </div>
+        <% if @store_informations.empty? %>
+        <p class="text-2xl my-10">検索結果が0件です
+        </p>
+        <%= link_to (t '.re_restaurant_search'),  search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
+        <% else %>
         <p class="mb-10 text-xl">投票したいお店を選択してください</p>
-        <% @store_informations.each_with_index do |info, index| %>
-        <%= f.fields_for :restaurants, info do |field_f| %>
-          <div class="form-contol flex items-center justify-between mb-5 text-center">
+        <% @store_informations.each do |info| %>
+        <%= f.fields_for :restaurants do |restaurant_form| %>
+        <div class="form-contol flex items-center justify-between mb-5 text-center">
             <%= image_tag info['photo']['mobile']['l'] %>
             <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
-            <%= field_f.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
-            <%= field_f.hidden_field :image, value: info['photo']['mobile']['l'] %>
-            <%= field_f.hidden_field :url, value: info['urls']['pc'] %>
+            <%= restaurant_form.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
+            <%= restaurant_form.hidden_field :image, value: info['photo']['mobile']['l'] %>
+            <%= restaurant_form.hidden_field :url, value: info['urls']['pc'] %>
           </div>
+          <% end %>
         <% end %>
-      <% end %>
-      
-        <div class="flex flex-col justify-center">
-          <div>
-            <%= f.submit (t '.create'), class: 'btn btn-primary mt-10' %>
-          </div>
-          <div class="flex justify-between mt-12">
-            <%= link_to (t '.re_restaurant_search'), search_restaurants_path, class: 'btn bg-red-600 border-red-600 mr-10 lg:mr-0' %>
+
+        <div class="form-control mb-10">
+          <%= f.label :new_restaurant_name, '新しい飲食店名', class: 'label' %>
+          <%= f.fields_for :restaurants do |new_restaurant_form| %>
+            <%= new_restaurant_form.text_field :name, class: 'input input-bordered' %>
+          <% end %>
+        </div>
+
+          <div class="flex flex-col justify-center">
             <div>
-              <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
-              <p>【画像提供：ホットペッパー グルメ】</p>
+              <%= f.submit (t '.create'), class: 'btn btn-primary mt-10' %>
+            </div>
+            <div class="flex justify-between mt-12">
+              <%= link_to (t '.re_restaurant_search'),  search_restaurants_path, class: 'btn bg-red-600 border-red-600 mr-10 lg:mr-0' %>
+              <div>
+                <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif" alt="ホットペッパー Webサービス" width="88" height="35" border="0" title="ホットペッパー Webサービス"></a>
+                <p>【画像提供：ホットペッパー グルメ】</p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %> 
       <% end %>
-    <% end %>
   </div>
 </div>
-

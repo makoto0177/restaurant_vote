@@ -6,20 +6,30 @@ class PostsController < ApplicationController
   before_action :get_hotpepper_res, only: %i[new]
 
   def new
-    @post_form = PostForm.new
+    @post = Post.new
+    @post.restaurants.build
   end
 
   def create
-    @post_form = PostForm.new(post_form_params)
+    @post = current_user.posts.build(post_params)
   
-    if @post_form.save
-      redirect_to posts_path, success: t('.success')
-    else
+    if @post.restaurants.empty?
+      flash.now[:error] = '少なくとも1つのレストランを選択してください。'
       get_hotpepper_res
-      flash.now[:error] = t('.fail')
+      render :new
+      return
+    end
+  
+    if @post.save
+      flash[:success] = '投稿が作成されました。'
+      redirect_to posts_path
+    else
+      puts @post.errors.full_messages
+      get_hotpepper_res
       render :new
     end
   end
+  
 
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
@@ -45,10 +55,11 @@ class PostsController < ApplicationController
 
   private
 
-  def post_form_params
-    params.require(:post_form).permit(:title, restaurants: [:name, :image, :url])
-  end
+  def post_params
+    params.require(:post).permit(:title, restaurants_attributes: [:name, :image, :url])
+  end  
   
+
   def get_hotpepper_res
     uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
     api_key = Rails.application.credentials.hotpepper_api_key
