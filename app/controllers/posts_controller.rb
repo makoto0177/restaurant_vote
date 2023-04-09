@@ -12,19 +12,11 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-  
-    if @post.restaurants.empty?
-      flash.now[:error] = '少なくとも1つのレストランを選択してください。'
-      get_hotpepper_res
-      render :new
-      return
-    end
-  
+
     if @post.save
       flash[:success] = '投稿が作成されました。'
       redirect_to posts_path
     else
-      puts @post.errors.full_messages
       get_hotpepper_res
       render :new
     end
