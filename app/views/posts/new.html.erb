@@ -8,27 +8,36 @@
           <%= f.text_field :title, required: true ,class: 'input input-bordered' %>
         </div>
         <% if @store_informations.empty? %>
-        <p class="text-2xl my-10">検索結果が0件です
-        </p>
-        <%= link_to (t '.re_restaurant_search'),  search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
+          <p class="text-2xl my-10">検索結果が0件です</p>
+          <%= link_to (t '.re_restaurant_search'),  search_restaurants_path, class: 'btn bg-red-600 border-red-600' %>
         <% else %>
         <p class="mb-10 text-xl">投票したいお店を選択してください</p>
         <% @store_informations.each do |info| %>
-        <%= f.fields_for :restaurants do |restaurant_form| %>
-        <div class="form-contol flex items-center justify-between mb-5 text-center">
-            <%= image_tag info['photo']['mobile']['l'] %>
-            <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
-            <%= restaurant_form.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
-            <%= restaurant_form.hidden_field :image, value: info['photo']['mobile']['l'] %>
-            <%= restaurant_form.hidden_field :url, value: info['urls']['pc'] %>
-          </div>
+          <%= f.fields_for :restaurants do |restaurant_form| %>
+            <div class="form-contol flex items-center justify-between mb-5 text-center">
+              <%= image_tag info['photo']['mobile']['l'] %>
+              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
+              <%= restaurant_form.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
+              <%= restaurant_form.hidden_field :image, value: info['photo']['mobile']['l'] %>
+              <%= restaurant_form.hidden_field :url, value: info['urls']['pc'] %>
+            </div>
           <% end %>
         <% end %>
-
-        <div class="form-control mb-10">
-          <%= f.label :new_restaurant_name, '新しい飲食店名', class: 'label' %>
-          <%= f.fields_for :restaurants do |new_restaurant_form| %>
-            <%= new_restaurant_form.text_field :name, class: 'input input-bordered' %>
+        <p class="mb-5 mt-20 text-xl">こちらからも飲食店を追加できます</p>
+        <div class="form-control mb-5">
+          <%= f.fields_for :restaurants do |restaurant_form| %>
+            <%= restaurant_form.label :name, class: 'label' %>
+            <%= restaurant_form.text_field :name, class: 'input input-bordered' %>
+          <% end %>
+        </div>
+        <div class="form-control my-5">
+          <%= f.fields_for :restaurants do |restaurant_form| %>
+            <%= restaurant_form.text_field :name, class: 'input input-bordered' %>
+          <% end %>
+        </div>
+        <div class="form-control my-5">
+          <%= f.fields_for :restaurants do |restaurant_form| %>
+            <%= restaurant_form.text_field :name, class: 'input input-bordered' %>
           <% end %>
         </div>
 
