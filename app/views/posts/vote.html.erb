@@ -9,6 +9,8 @@
   <div class="form-contol flex items-center justify-between mb-5 text-center">
     <% if restaurant.image.present? %>
       <%= image_tag restaurant.image %>
+    <% else %>
+      <div class="w-22 h-20"></div>
     <% end %>
   
     <% if restaurant.url.present? %>
