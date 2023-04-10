@@ -5,7 +5,49 @@
     <% if @restaurant_count.empty? %>
       <p class="text-xl my-3"><%= t('.no_vote_results') %></p>
     <% else %>
-      <%= bar_chart @restaurant_count, empty: "投票結果がありません" %>
+    <div class="w-full lg:hidden">
+      <%= bar_chart @restaurant_count, empty: "投票結果がありません", height: "800px", width: "300px", library: { 
+        yAxis: {
+          max: @max_value,
+          allowDecimals: false
+        },
+        legend: {
+          enabled: false
+        },
+        chart: {
+          height: 800
+        },
+        xAxis: {
+          labels: {
+            style: {
+              textOverflow: 'none',
+            },
+          }
+        }
+        } %>
+      </div>
+
+    <div class="w-full hidden lg:block">
+      <%= bar_chart @restaurant_count, empty: "投票結果がありません", height: "500px", library: { 
+        yAxis: {
+          max: @max_value,
+          allowDecimals: false
+        },
+        legend: {
+          enabled: false
+        },
+        chart: {
+          height: 500
+        },
+        xAxis: {
+          labels: {
+            style: {
+              textOverflow: 'none',
+            },
+          }
+        }
+        } %>
+      </div>
     <% end %>
     <%= link_to (t '.vote_list_page'), posts_path, class: 'btn bg-red-600 border-red-600 mt-12' %>
   </div>

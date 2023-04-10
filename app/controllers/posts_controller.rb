@@ -37,6 +37,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @restaurants = @post.restaurants
     @restaurant_count = @restaurants.map { |restaurant| [restaurant.name, restaurant.votes.count] }.to_h
+    @max_value = @restaurant_count.values.max
   end  
 
   def vote
