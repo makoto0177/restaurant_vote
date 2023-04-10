@@ -9,6 +9,7 @@
     "chartkick": "^5.0.1",
     "daisyui": "^2.50.1",
     "esbuild": "^0.17.8",
+    "highcharts": "^10.3.3",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.6"
   },
