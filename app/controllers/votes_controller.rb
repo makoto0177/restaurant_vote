@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   before_action :set_post, only: %i[create]
 
   def create
-    @restaurant = Restaurant.find_by(id: params.dig(:vote, :restaurant))
+    @restaurant = Restaurant.find_by(id: params.dig(:vote, :restaurant_id))
     @vote = Vote.new(user: current_user, restaurant: @restaurant)
 
     if @vote.save
@@ -17,7 +17,6 @@ class VotesController < ApplicationController
   private
 
   def set_post
-    binding.pry
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 end

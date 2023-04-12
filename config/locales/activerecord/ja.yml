@@ -14,6 +14,7 @@ ja:
       post:
         title: 'タイトル（必須）'
       vote:
+        restaurant: '飲食店'
         user_id: 'このお店には'  
       restaurant:
         name: '飲食店名'  
