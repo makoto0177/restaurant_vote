@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       flash[:success] = '投稿が作成されました。'
       redirect_to posts_path
     else
-      get_hotpepper_res
+      @store_informations = session[:store_informations]
       render :new
     end
   end
@@ -69,6 +69,7 @@ class PostsController < ApplicationController
     res = Net::HTTP.get(URI.parse(url))
     @parsed_json = JSON.parse(res)
 
-    @store_informations = @parsed_json['results']['shop'] || []
+    @store_informations = @parsed_json['results']['shop']
+    session[:store_informations] = @store_informations
   end
 end
