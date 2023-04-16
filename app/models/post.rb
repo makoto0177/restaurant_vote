@@ -11,6 +11,6 @@ class Post < ApplicationRecord
   private
 
   def at_least_one_restaurant
-    errors.add(:error, '少なくとも1つのお店を選択してください') if restaurants.empty?
+    errors.add(:base, '少なくとも1つのお店を選択してください') if restaurants.empty?
   end
 end
