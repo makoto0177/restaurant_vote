@@ -3,7 +3,7 @@
     <h1 class="my-6 text-center text-4xl font-bold tracking-tight text-gray-900">投票ページ</h1>
     <h3 class="my-6 text-center text-2xl font-bold tracking-tight text-gray-900"><%= @post.title %></h3>
     <p class="mb-10 text-xl">お店を選んで投票してください</p>
-    <%= form_with model: @vote, url: votes_path, local: true do |f| %>
+    <%= form_with model: @vote, url: post_votes_path(@post), local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <% @restaurants.each do |restaurant| %>
   <div class="form-contol flex items-center justify-between mb-5 text-center">

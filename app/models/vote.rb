@@ -4,4 +4,5 @@ class Vote < ApplicationRecord
   has_many :vote_restaurants, dependent: :destroy
 
   validates :user_id, uniqueness: { scope: :restaurant_id, message: "投票済みです" }
+
 end

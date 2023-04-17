@@ -1,22 +1,22 @@
 class VotesController < ApplicationController
+  before_action :set_post, only: %i[create]
+
   def create
-    if params[:vote].present? && params[:vote][:restaurant_id].present?
-      @restaurant = Restaurant.find(params[:vote][:restaurant_id])
-      @vote = Vote.create(user: current_user, restaurant: @restaurant)
-      if @vote.save
-        @post = Post.find(@restaurant.post_id)
-        redirect_to post_path(@post), success: t('.success')
-      else
-        @post = Post.find(@restaurant.post_id)
-        @restaurants = Restaurant.where(post_id: @post.id)
-        flash.now[:error] = t('.fail')
-        render template: 'posts/vote', status: :unprocessable_entity
-      end
+    @restaurant = Restaurant.find_by(id: params.dig(:vote, :restaurant_id))
+    @vote = Vote.new(user: current_user, restaurant: @restaurant)
+
+    if @vote.save
+      redirect_to post_path(@post), success: t('.success')
     else
-      @post = Post.find(params[:post_id])
       @restaurants = Restaurant.where(post_id: @post.id)
       flash.now[:error] = t('.fail')
       render template: 'posts/vote', status: :unprocessable_entity
-    end    
+    end
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end
