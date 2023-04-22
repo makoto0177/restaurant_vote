@@ -62,6 +62,7 @@ ja:
       search_word: 'お店ジャンル（任意）'
   votes:
     create:
+      already_voted: 'すでに投票済みです' 
       success: '投票しました'
       fail: '投票に失敗しました'
       

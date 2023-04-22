@@ -18,7 +18,7 @@
     <% else %>
       <%= f.label restaurant.name, class: 'text-base lg:text-xl' %>
     <% end %>
-    <%= f.radio_button :restaurant_id, restaurant.id %>
+    <%= f.radio_button :restaurant_id, restaurant.id, class: 'w-5 h-5' %>
   </div>
 <% end %>
 
