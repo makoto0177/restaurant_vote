@@ -16,7 +16,7 @@
           <%= f.fields_for :restaurants do |restaurant_form| %>
             <div class="form-contol flex items-center justify-between mb-5 text-center">
               <%= image_tag info['photo']['mobile']['l'] %>
-              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl' %>
+              <%= link_to info['name'], info['urls']['pc'], class: 'text-blue-700 text-base lg:text-xl', target: :_blank, rel: 'noopener noreferrer' %>
               <%= restaurant_form.check_box :name, { class: 'w-5 h-5' }, info['name'], false %>
               <%= restaurant_form.hidden_field :image, value: info['photo']['mobile']['l'] %>
               <%= restaurant_form.hidden_field :url, value: info['urls']['pc'] %>

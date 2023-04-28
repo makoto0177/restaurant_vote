@@ -14,7 +14,7 @@
     <% end %>
   
     <% if restaurant.url.present? %>
-      <%= link_to restaurant.name, restaurant.url, class: 'text-blue-700 text-base lg:text-xl' %>
+      <%= link_to restaurant.name, restaurant.url, class: 'text-blue-700 text-base lg:text-xl', target: :_blank, rel: 'noopener noreferrer' %>
     <% else %>
       <%= f.label restaurant.name, class: 'text-base lg:text-xl' %>
     <% end %>
