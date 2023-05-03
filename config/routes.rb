@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     member do
       get 'vote'
     end
-    resources :votes, only: %i[create] 
+    resources :votes, only: %i[create]
+    resources :comments, only: %i[create destroy]
   end
   resources :restaurants, only: %i[index] do
     collection do
