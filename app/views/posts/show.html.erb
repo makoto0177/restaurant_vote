@@ -54,6 +54,17 @@
           <p class="text-xl text-blue-700 py-2"><%= link_to max_restaurant.name, max_restaurant.url, target: :_blank, rel: 'noopener noreferrer' %></p>
         <% end %>
       </div>
+      <h1>コメント一覧</h1>
+      <ul id="comments-list">
+        <% @comments.each do |comment| %>
+          <li><%= comment.body %></li>
+        <% end %>
+      </ul>
+
+      <%= form_with model: [@post, @comment], remote: true do |f| %>
+        <%= f.text_field :body %>
+        <%= f.submit %>
+      <% end %>  
     <% end %>
     <%= link_to (t '.vote_list_page'), posts_path, class: 'btn bg-red-600 border-red-600 mt-12' %>
   </div>

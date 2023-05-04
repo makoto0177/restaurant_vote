@@ -39,6 +39,8 @@ class PostsController < ApplicationController
     max_votes = @restaurants.max_by { |restaurant| restaurant.votes.count }.votes.count
     @max_voted_restaurants = @restaurants.select { |restaurant| restaurant.votes.count == max_votes }
     @max_value = @restaurant_count.values.max
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
   end  
 
   def vote
