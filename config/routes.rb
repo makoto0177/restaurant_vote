@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'vote'
     end
     resources :votes, only: %i[create]
+    mount ActionCable.server => '/cable'
     resources :comments, only: %i[create destroy]
   end
   resources :restaurants, only: %i[index] do

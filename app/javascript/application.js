@@ -2,3 +2,4 @@
 import "@hotwired/turbo-rails"
 import "chartkick/highcharts"
 import "./controllers"
+import "./channels"
