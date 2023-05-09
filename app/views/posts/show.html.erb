@@ -60,10 +60,8 @@
         <%= render @comments %>
       </div>
 
-      <%= form_with model: [@post, @comment], remote: true do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit %>
-      <% end %>  
+      <%= render 'comments/form', post: @post, comment: @comment %>
+
     <% end %>
     <%= link_to (t '.vote_list_page'), posts_path, class: 'btn bg-red-600 border-red-600 mt-12' %>
   </div>

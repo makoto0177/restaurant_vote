@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'privacy', to: 'static_pages#privacy'
   resources :users, only: %i[new create]
   resources :posts, only: %i[index new create show destroy] do
+    resources :comments, only: %i[create destroy]
     member do
       get 'vote'
     end
