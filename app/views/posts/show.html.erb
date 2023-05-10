@@ -55,12 +55,16 @@
         <% end %>
       </div>
 
-      <h1>コメント一覧</h1>
-      <div id="comments">
-        <%= render @comments %>
+      <div class="mt-12">
+        <p class="text-2xl">コメント一覧</p>
+        <div id="comments" class="w-80 mx-auto">
+          <%= render @comments %>
+        </div>
       </div>
-
-      <%= render 'comments/form', post: @post, comment: @comment %>
+        
+      <div class="my-12 p-4">
+        <%= render 'comments/form', post: @post, comment: @comment %>
+      </div>
 
     <% end %>
     <%= link_to (t '.vote_list_page'), posts_path, class: 'btn bg-red-600 border-red-600 mt-12' %>

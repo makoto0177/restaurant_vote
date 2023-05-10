@@ -1,3 +1,11 @@
-<div>
-  <p><%= comment.body %></p>
+<div class="flex flex-col space-y-2 p-1">
+  <div class="flex items-start space-x-2 <%= comment.own?(current_user) ? 'flex-row-reverse' : '' %>">
+    <div class="flex flex-col space-y-2">
+      <p class="text-sm text-gray-500 <%= comment_text_alignment(comment, current_user) %>"><%= comment.user.name %></p>
+      <p class="text-xs text-gray-400 <%= comment_text_alignment(comment, current_user) %>"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+      <div class="<%= comment_background_color(comment, current_user) %> rounded-xl p-2">
+        <p class="text-sm"><%= comment.body %></p>
+      </div>
+    </div>
+  </div>
 </div>
