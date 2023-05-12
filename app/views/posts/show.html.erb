@@ -54,6 +54,18 @@
           <p class="text-xl text-blue-700 py-2"><%= link_to max_restaurant.name, max_restaurant.url, target: :_blank, rel: 'noopener noreferrer' %></p>
         <% end %>
       </div>
+
+      <div class="mt-12">
+        <p class="text-2xl">コメント一覧</p>
+        <div id="comments" class="mx-auto w-[300px] lg:w-[400px]">
+          <%= render @comments %>
+        </div>
+      </div>
+        
+      <div class="my-12 p-4">
+        <%= render 'comments/form', post: @post, comment: @comment %>
+      </div>
+
     <% end %>
     <%= link_to (t '.vote_list_page'), posts_path, class: 'btn bg-red-600 border-red-600 mt-12' %>
   </div>

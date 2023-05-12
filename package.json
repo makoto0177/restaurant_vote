@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actioncable": "^7.0.4-3",
     "autoprefixer": "^10.4.13",
     "chart.js": "^4.2.1",
     "chartkick": "^5.0.1",

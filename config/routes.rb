@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   get 'privacy', to: 'static_pages#privacy'
   resources :users, only: %i[new create]
   resources :posts, only: %i[index new create show destroy] do
+    resources :comments, only: %i[create destroy]
     member do
       get 'vote'
     end
-    resources :votes, only: %i[create] 
+    resources :votes, only: %i[create]
+    mount ActionCable.server => '/cable'
+    resources :comments, only: %i[create destroy]
   end
   resources :restaurants, only: %i[index] do
     collection do
