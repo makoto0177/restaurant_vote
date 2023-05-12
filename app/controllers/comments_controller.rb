@@ -5,15 +5,16 @@ class CommentsController < ApplicationController
       ActionCable.server.broadcast 'comment_channel', { content: render_comment(@comment) }
     else
       flash[:danger] = 'コメントの投稿に失敗しました。'
-      redirect_to post_path(@comment.post)
+      redirect_to post_path(@comment.post), status: :unprocessable_entity
     end
   end
   
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
+    @post = @comment.post
     @comment.destroy
     flash[:success] = 'コメントを削除しました。'
-    redirect_to post_path(@comment.post)
+    redirect_to post_path(@comment.post), status: :see_other
   end
 
   private
