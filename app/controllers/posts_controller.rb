@@ -23,7 +23,8 @@ class PostsController < ApplicationController
   
 
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def destroy
@@ -53,5 +54,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, restaurants_attributes: [:name, :image, :url])
-  end  
+  end
 end
