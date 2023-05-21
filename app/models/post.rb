@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def at_least_one_restaurant
     errors.add(:base, '少なくとも1つのお店を選択してください') if restaurants.empty?
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title created_at]
+  end
 end
