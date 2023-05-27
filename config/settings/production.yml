@@ -1,0 +1,2 @@
+line:
+  callback_url: 'https://voteat.fly.dev/oauth/callback?provider=line'
