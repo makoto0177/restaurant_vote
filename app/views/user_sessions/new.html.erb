@@ -15,5 +15,6 @@
         <%= link_to (t '.register_page'), new_user_path, class: 'inline-block text-sm lg:text-base' %>
       </div>
     <% end %>
+    <%= link_to 'Login with Line', auth_at_provider_path(provider: :line) %>
   </div>
 </div>
