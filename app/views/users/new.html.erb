@@ -24,6 +24,16 @@
         <%= link_to (t '.login_page'), login_path, class: 'inline-block text-sm lg:text-base' %>
       </div>
     <% end %>
-    <%= link_to 'Login with Line', auth_at_provider_path(provider: :line) %>
+    
+    <div class="text-center my-8">
+      <p class="text-gray-600 text-sm lg:text-base">またはLINEでログイン</p>
+    </div>
+    <div class="flex justify-center">
+      <div>
+        <%= link_to auth_at_provider_path(provider: :line) do %>
+        <%= image_tag 'btn_login_base.png', alt: 'LINEでログイン' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
