@@ -3,7 +3,7 @@ module PostsHelper
   require 'json'
 
   def get_hotpepper_res(keyword: nil, address: nil)
-    uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
+    uri = 'https://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
     api_key = Rails.application.credentials.hotpepper_api_key
     url = uri << "?key=" << api_key << "&format=json" 
 
