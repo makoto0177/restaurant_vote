@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, restaurants_attributes: [:name, :image, :url])
+    params.require(:post).permit(:title, restaurants_attributes: [:name, :image, :url, :external_shop_id])
   end
 end
